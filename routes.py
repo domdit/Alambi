@@ -1,4 +1,4 @@
-from alambi import app, db, mail, bcrypt, login_manager
+from alambi import app, db, mail, bcrypt, login_manager, recaptcha
 from alambi.forms import (GeneralSettingsForm, NewThemeForm, Login, Search,
                           NewBlogPost, AdminForm, CommentForm, RequestResetForm,
                           ResetPassword, SidebarSettingsForm, ThemeSelectForm,
