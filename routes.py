@@ -125,31 +125,31 @@ def post(post_id):
 
         if form.comment_submit.data:
             if form.validate_on_submit:
-                #if recaptcha.verify():
+                if recaptcha.verify():
 
-                comment = Comment(name=form.name.data,
-                                  email=form.email.data,
-                                  text=form.text.data,
-                                  post=post
-                                  )
+                    comment = Comment(name=form.name.data,
+                                      email=form.email.data,
+                                      text=form.text.data,
+                                      post=post
+                                      )
 
-                post.comment_count += 1
+                    post.comment_count += 1
 
-                db.session.add(comment)
-                db.session.commit()
+                    db.session.add(comment)
+                    db.session.commit()
 
-                msg = Message("New comment from " + general_settings.name, sender='noreply@alambi.com', recipients=[mail_address])
-                msg.body = '''
-                From: %s <%s>
-                %s
-                %s
-                ''' % (form.name.data, form.email.data, form.text.data, url_for('post', post_id=post_id, _external=True))
+                    msg = Message("New comment from " + general_settings.name, sender='noreply@alambi.com', recipients=[mail_address])
+                    msg.body = '''
+                    From: %s <%s>
+                    %s
+                    %s
+                    ''' % (form.name.data, form.email.data, form.text.data, url_for('post', post_id=post_id, _external=True))
 
-                mail.send(msg)
+                    mail.send(msg)
 
-                flash("Thank you for the comment! Check back soon for a reply!")
+                    flash("Thank you for the comment! Check back soon for a reply!")
 
-                return redirect(url_for('post', post_id=post_id))
+                    return redirect(url_for('post', post_id=post_id))
 
     comments = Comment.query.filter(Comment.post_id == post_id).order_by(Comment.date.desc()).all()
 
