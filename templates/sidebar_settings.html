@@ -44,28 +44,6 @@
         </div>
 
 
-        <div class="row">
-            <div class="form-group">
-                {{ form.img.label(class="form-control-label") }}
-                {% if form.img.errors %}
-                    {{ form.img(class="form-control form-control-sm is-invalid") }}
-                    <div class="invalid-feedback">
-                        {% for error in form.img.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    <br>
-                    {{ form.img(class="") }}
-                {% endif %}
-            </div>
-
-
-        </div>
-
-
-
-
         <div class="form-group ">
             {{ form.text.label(class="form-control-label") }}
             {% if form.text.errors %}

@@ -266,11 +266,19 @@ def like(post_id):
 
 @app.route('/settings')
 def settings_reroute():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     return redirect(url_for('settings'))
 
 @app.route("/settings/general/", methods=['GET', 'POST'])
 @login_required
 def settings():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font
     main_font = main_font.replace('+',' ')
@@ -318,6 +326,10 @@ def settings():
 @app.route("/settings/sidebar/", methods=['GET', 'POST'])
 @login_required
 def sidebar():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     tinymce = tinymce_api_key
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
@@ -393,6 +405,9 @@ def sidebar():
 @app.route("/settings/theme/", methods=['GET', 'POST'])
 @login_required
 def theme():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
 
     tinymce = tinymce_api_key
     general_settings = GeneralSettings.query.first()
@@ -468,6 +483,10 @@ def theme():
 @app.route("/settings/new_post/", methods=['GET', 'POST'])
 @login_required
 def new_post():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     tinymce = tinymce_api_key
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
@@ -500,6 +519,10 @@ def new_post():
 @app.route("/settings/manage_users/", methods=['GET', 'POST'])
 @login_required
 def manage_users():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     tinymce = tinymce_api_key
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
@@ -529,6 +552,10 @@ def manage_users():
 @app.route("/settings/about-alambi/")
 @login_required
 def about_alambi():
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font
     main_font = main_font.replace('+',' ')
@@ -544,6 +571,10 @@ def about_alambi():
 @app.route("/settings/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update(post_id):
+    if current_user.is_authenticated != True:
+        flash('You must be logged in to do that!', 'warning')
+        return redirect(url_for('login'))
+
     tinymce = tinymce_api_key
 
     theme_settings = Theme.query.filter_by(selected=True).first()
@@ -704,16 +735,8 @@ def page_not_found(e):
 
 @app.errorhandler(401)
 def page_not_found(e):
-    theme_settings = Theme.query.filter_by(selected=True).first()
-    error = 401
-    error_text = 'Forbidden!'
-    bg_color = '#F2684A'
-    link_color = '#FCC499'
-    login = True
-
-    return render_template('error.html', title='Alambi - 401', theme_settings=theme_settings, error=error,
-                           bg_color=bg_color, link_color=link_color, error_text=error_text,
-                           login=login), 401
+    flash('You must be logged in to do that', 'warning')
+    return redirect(url_for('login'))
 
 @app.errorhandler(403)
 def page_not_found(e):
