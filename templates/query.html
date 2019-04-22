@@ -25,7 +25,7 @@
                     <div class="blog-post-container border rounded mb-3">
 
                         <a href="{{url_for('post', post_id=post.blog_id)}}"><h1>{{post.name}}</h1></a>
-                        <small>{{post.date.strftime('%m/%d/%Y %I:%M')|safe}} by Dominic DiTaranto</small>
+                        <small>{{post.date.strftime('%m/%d/%Y %I:%M')|safe}} by {{general_settings.author}}</small>
                         <small>
                             {% if current_user.is_authenticated %}
 

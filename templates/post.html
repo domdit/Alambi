@@ -35,7 +35,7 @@
                     <h1>{{post.name|safe}}</h1>
 
 
-                <small>{{post.date.strftime('%m/%d/%Y %I:%M')|safe}} by Dominic DiTaranto</small>
+                <small>{{post.date.strftime('%m/%d/%Y %I:%M')|safe}} by {{general_settings.author}}</small>
 
                     <div class="float-right">
                         <a href="{{url_for('like', post_id=post.blog_id)}}"><i class="fas fa-thumbs-up {{ 'thumb-up' if like else 'thumb'}}"></i>
