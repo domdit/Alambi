@@ -1,0 +1,171 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+
+body {
+    background-color: var(--bg-color);
+    font-family: var(--main-font);
+    color: var(--text-color);
+}
+
+main{
+    padding: 2%;
+
+}
+
+.blog-post-container{
+    background-color: var(--post-container-color);
+    padding:30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.19), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.blog-post-container h1,
+.blog-post-container h3,
+.blog-post-container h5 {
+    font-family: {{head_font}};
+    color: var(--header-color);
+}
+
+.blog-post-container a h1:hover,
+.blog-post-container a h3:hover,
+.blog-post-container a h5:hover {
+    font-family: {{head_font}};
+    color: var(--header-color);
+    opacity: 0.5;
+    text-decoration: none;
+
+}
+
+.blog-post-container h2,
+.blog-post-container h4,
+.blog-post-container h6 {
+    font-family: {{head_font}};
+    color: var(--alt-header-color);
+}
+
+.blog-post-container a h2:hover,
+.blog-post-container a h4:hover,
+.blog-post-container a h6:hover {
+    font-family: {{head_font}};
+    color: var(--alt-header-color);
+
+}
+
+a {
+    color: var(--link-color);
+}
+
+a:hover {
+    color: var(--link-color);
+    opacity: 0.5;
+    text-decoration: none;
+}
+
+.excerpt {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    line-height: 21px;
+    max-height: 150px;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+.btn-custom{
+    background-color: var(--comment-button);
+}
+
+.btn-custom:hover{
+    background-color: var(--comment-button);
+    opacity: 0.7;
+
+}
+
+.sticky {
+    color: var(--pin-button);
+}
+
+.sticky-clicked {
+    color: var(--pin-button);
+    opacity: 0.5;
+}
+
+.thumb {
+    color: var(--like-color);
+}
+
+.thumb-up{
+    color: var(--like-color);
+    opacity: 0.5;
+}
+
+
+
+
+/*   CSS for the settings menus   */
+
+.btn-secondary{
+    font-size: 1em;
+    text-align: left;
+}
+
+.list-group-item,
+.list-group,
+.btn-secondary{
+    -webkit-border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+
+.settings-container{
+    width: auto;
+    color: white;
+    height: auto;
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+nav {
+    font-family: 'Consolas', 'Deja Vu Sans Mono', 'Bitstream Vera Sans Mono', monospace;
+}
+
+nav a{
+    color: black;
+}
+
+.settings-sidebar {
+    position: relative;
+    min-width: 190px;
+    max-width: 190px;
+    background-color: #6c757d;
+    height: auto;
+}
+
+.settings-main{
+    height: auto;
+    width: auto;
+}
+
+
+.login_bg{
+    position: fixed;
+    height:100%;
+    width: 100%;
+    background-color: #00878c;
+    background-image: url("https://www.transparenttextures.com/patterns/black-thread.png");
+}
+
+.login_container{
+    margin: auto;
+    max-width:500px;
+    width:95%
+}
+
+.theme_color_sample{
+    height:25px;
+    width:25px;
+    float: left;
+
+}
+
+.created-themes {
+    max-width: 300px;
+}

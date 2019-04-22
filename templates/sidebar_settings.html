@@ -1,0 +1,245 @@
+{% set active_page = "sidebar" %}
+
+{% extends 'admin_layout.html' %}
+
+{% block admin %}
+
+<form method="POST" action="" style="max-width:500px;" enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <div class="container">
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group ">
+                    {{ form.main_position.label(class="form-control-label") }}
+                    {% if form.main_position.errors %}
+                        {{ form.main_position(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.main_position.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.main_position(class="") }}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group ">
+                    {{ form.post_position.label(class="form-control-label") }}
+                    {% if form.post_position.errors %}
+                        {{ form.post_position(class="form-control form-control-sm is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.post_position.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                        {{ form.post_position(class="") }}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="form-group">
+                {{ form.img.label(class="form-control-label") }}
+                {% if form.img.errors %}
+                    {{ form.img(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.img.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <br>
+                    {{ form.img(class="") }}
+                {% endif %}
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="form-group ">
+            {{ form.text.label(class="form-control-label") }}
+            {% if form.text.errors %}
+                {{ form.text(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.text.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.text(class="form-control form-control-sm") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.search.label(class="form-control-label") }}
+            {% if form.search.errors %}
+                {{ form.search(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.search.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.search(class="form-control form-control-sm", style="width:15px;") }}
+            {% endif %}
+        </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.recent_posts.label(class="form-control-label") }}
+                        {% if form.recent_posts.errors %}
+                            {{ form.recent_posts(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.recent_posts.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.recent_posts(class="form-control form-control-sm", style="width:15px;") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.max_recent.label(class="form-control-label") }}
+                        {% if form.max_recent.errors %}
+                            {{ form.max_recent(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.max_recent.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.max_recent(class="form-control form-control-sm") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.popular_posts.label(class="form-control-label") }}
+                        {% if form.popular_posts.errors %}
+                            {{ form.popular_posts(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.popular_posts.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.popular_posts(class="form-control form-control-sm", style="width:15px;") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.max_popular.label(class="form-control-label") }}
+                        {% if form.max_popular.errors %}
+                            {{ form.max_popular(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.max_popular.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.max_popular(class="form-control form-control-sm") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.category.label(class="form-control-label") }}
+                        {% if form.category.errors %}
+                            {{ form.category(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.category.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.category(class="form-control form-control-sm", style="width:15px;") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.max_category.label(class="form-control-label") }}
+                        {% if form.max_category.errors %}
+                            {{ form.max_category(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.max_category.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.max_category(class="form-control form-control-sm") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.tag.label(class="form-control-label") }}
+                        {% if form.tag.errors %}
+                            {{ form.tag(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.tag.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.tag(class="form-control form-control-sm", style="width:15px;") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        {{ form.max_tag.label(class="form-control-label") }}
+                        {% if form.max_tag.errors %}
+                            {{ form.max_tag(class="form-control form-control-sm is-invalid") }}
+                            <div class="invalid-feedback">
+                                {% for error in form.max_tag.errors %}
+                                    <span>{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        {% else %}
+                            {{ form.max_tag(class="form-control form-control-sm") }}
+                        {% endif %}
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+
+</form>
+
+{% endblock %}

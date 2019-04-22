@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+{% block script %}
+<script src="{{url_for('static', filename='js/spectrum.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='spectrum.css')}}">
+
+<script src="{{url_for('static', filename='js/jquery.fontselect.js')}}"></script>
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='fontselect-default.css')}}">
+
+{# TinyMCE #}
+<script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey={{tinymce}}"></script>
+
+
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        height: 300,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor textcolor',
+            'searchreplace visualblocks code fullscreen imagetools',
+            'insertdatetime media table paste code help wordcount codesample'
+        ],
+        toolbar: 'undo redo | formatselect | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat | code codesample | help',
+        content_css: [
+            '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+            '//www.tiny.cloud/css/codepen.min.css'
+        ],
+
+        toolbar_drawer: 'sliding',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        images_upload_base_path: '/static/upload',
+        menubar: "tools table format view insert edit",
+        paste_data_images: true
+
+    });
+</script>
+
+{% endblock %}
+
+{% block main %}
+<style>body{background-color: #343a40;}</style>
+
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+  <i class="fas fa-cog"></i>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <a href="{{url_for('settings')}}" class="nav-link {{ 'active' if active_page == 'general' else '' }}">General</a>
+    <a href="{{url_for('sidebar')}}" class="nav-link {{ 'active' if active_page == 'sidebar' else '' }}">Sidebar</a>
+    <a href="{{url_for('theme')}}" class="nav-link {{ 'active' if active_page == 'theme' else '' }}">Appearance</a>
+    <a href="{{url_for('new_post')}}" class="nav-link {{ 'active' if active_page == 'post' else '' }}">New Blog Post</a>
+    <a href="{{url_for('manage_users')}}" class="nav-link {{ 'active' if active_page == 'users' else '' }}">Users</a>
+    <a href="{{url_for('index')}}" class="nav-link">Return to Blog</a>
+    <a href="{{url_for('about_alambi')}}" class="nav-link {{ 'active' if active_page == 'about' else '' }}">About</a>
+
+
+    <a href="{{url_for('logout')}}" class="nav-link" >Logout</a>
+  </div>
+</nav>
+
+
+    <div class="settings-container container-fluid rounded bg-dark" style="margin-top:50px; height:;">
+
+        <div class="row" style="height:auto;">
+
+
+            <div class="container" style="height:auto;">
+
+
+                <div class="container mt-4 pb-5">
+                    <h2>{{settings_title}}</h2>
+                    <hr color="white">
+
+                    {% block admin %}
+
+                    {% endblock %}
+
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+    $(".hex").spectrum({
+    preferredFormat: "hex",
+    showInput: true,
+    showPalette: true,
+    localStorageKey: "theme.page",
+    palette: [["red", "rgba(0, 255, 0, .5)", "rgb(0, 0, 255)"]]
+    });
+
+    </script>
+
+
+
+{% endblock %}

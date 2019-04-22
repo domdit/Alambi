@@ -1,0 +1,43 @@
+
+<style>
+    body{
+        font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana', sans-serif;
+        background-color: {{bg_color}};
+        padding-top: 3%;
+    }
+
+    span {
+        font-size:10em;
+        color:white;
+        font-weight: bolder;
+    }
+
+    a {
+        color:	{{link_color}};
+        font-size: 1.3em;
+        padding: 10px;
+        text-decoration: none;
+        font-weight: bolder;
+    }
+
+    a:hover {
+        opacity: 0.7;
+    }
+
+</style>
+
+<div>
+    <center>
+        <span>{{error}}</span>
+        <br>
+        <a href="{{url_for('index')}}">{{error_text}}</a><br>
+        {% if login %}
+        <a style="color:#419EAE;" href="{{url_for('login')}}">Login?</a>
+        {% endif %}
+    </center>
+
+
+</div>
+
+
+

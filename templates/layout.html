@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{{title}}</title>
+
+    {# Bootstrap #}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    {# Fontawesome #}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    {# jquery and bootstrap stuff #}
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    {# main stylesheet #}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css')|autoversion }}">
+
+    {% block script %}{% endblock %}
+
+    <link href="https://fonts.googleapis.com/css?family={{theme_settings.main_font}}|{{theme_settings.header_font}}" rel="stylesheet">
+
+    <style>
+        :root {
+            --main-font: '{{main_font}}';
+            --header-font: '{{head_font}}';
+            --bg-color: {{theme_settings.bg_color}};
+            --text-color: {{theme_settings.text_color}};
+            --post-container-color: {{theme_settings.post_container_color}};
+            --blog-name-color: {{theme_settings.blog_name_color}};
+            --header-color: {{theme_settings.header_color}};
+            --alt-header-color: {{theme_settings.alt_header_color}};
+            --link-color: {{theme_settings.link_color}};
+            --like-color: {{theme_settings.like_color}};
+            --pin-button: {{theme_settings.sticky_color}};
+            --comment-button: {{theme_settings.comment_color}};
+        }
+    </style>
+
+
+
+</head>
+<body>
+
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+
+        <div class="alert alert-info alert-dismissible alert-{{category}} m-2" style="position:fixed; z-index:9999; right:2px; top:2px;">
+            <span type="text" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
+            {{ message }}
+        </div>
+
+    {% endfor%}
+
+    {% block main %}{% endblock %}
+
+</body>
+</html>

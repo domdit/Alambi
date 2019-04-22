@@ -1,0 +1,89 @@
+{% set active_page = "general" %}
+
+{% extends 'admin_layout.html' %}
+
+{% block admin %}
+
+<form method="POST" action="" style="max-width:500px;">
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <div class="new_admin">
+        <div class="form-group ">
+            {{ form.blog_name.label(class="form-control-label") }}
+            {% if form.blog_name.errors %}
+                {{ form.blog_name(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.blog_name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.blog_name(class="form-control form-control-sm") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.author_name.label(class="form-control-label") }}
+            {% if form.author_name.errors %}
+                {{ form.author_name(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.author_name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.author_name(class="form-control form-control-sm") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            {{ form.post_count.label(class="form-control-label") }}
+            {% if form.post_count.errors %}
+                {{ form.post_count(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.post_count.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.post_count(class="form-control form-control-sm") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.excerpt.label(class="form-control-label") }}
+            {% if form.excerpt.errors %}
+                {{ form.excerpt(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.excerpt.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.excerpt(class="form-control form-control-sm", style="width:15px;") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.comments.label(class="form-control-label") }}
+            {% if form.comments.errors %}
+                {{ form.comments(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.comments.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.comments(class="form-control form-control-sm", style="width:15px;") }}
+            {% endif %}
+        </div>
+
+            </div>
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+
+</form>
+
+{% endblock %}
