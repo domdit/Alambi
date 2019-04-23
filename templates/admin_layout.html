@@ -52,16 +52,14 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
-    <a href="{{url_for('settings')}}" class="nav-link {{ 'active' if active_page == 'general' else '' }}">General</a>
-    <a href="{{url_for('sidebar')}}" class="nav-link {{ 'active' if active_page == 'sidebar' else '' }}">Sidebar</a>
-    <a href="{{url_for('theme')}}" class="nav-link {{ 'active' if active_page == 'theme' else '' }}">Appearance</a>
-    <a href="{{url_for('new_post')}}" class="nav-link {{ 'active' if active_page == 'post' else '' }}">New Blog Post</a>
-    <a href="{{url_for('manage_users')}}" class="nav-link {{ 'active' if active_page == 'users' else '' }}">Users</a>
-    <a href="{{url_for('index')}}" class="nav-link">Return to Blog</a>
-    <a href="{{url_for('about_alambi')}}" class="nav-link {{ 'active' if active_page == 'about' else '' }}">About</a>
-
-
-    <a href="{{url_for('logout')}}" class="nav-link" >Logout</a>
+    <a href="{{url_for('admin.settings')}}" class="nav-link {{ 'active' if active_page == 'general' else '' }}">General</a>
+    <a href="{{url_for('admin.sidebar')}}" class="nav-link {{ 'active' if active_page == 'sidebar' else '' }}">Sidebar</a>
+    <a href="{{url_for('admin.theme')}}" class="nav-link {{ 'active' if active_page == 'theme' else '' }}">Appearance</a>
+    <a href="{{url_for('admin.new_post')}}" class="nav-link {{ 'active' if active_page == 'post' else '' }}">New Blog Post</a>
+    <a href="{{url_for('admin.manage_users')}}" class="nav-link {{ 'active' if active_page == 'users' else '' }}">Users</a>
+    <a href="{{url_for('main.index')}}" class="nav-link">Return to Blog</a>
+    <a href="{{url_for('admin.about_alambi')}}" class="nav-link {{ 'active' if active_page == 'about' else '' }}">About</a>
+    <a href="{{url_for('users.logout')}}" class="nav-link" >Logout</a>
   </div>
 </nav>
 

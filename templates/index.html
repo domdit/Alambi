@@ -26,7 +26,7 @@
                         <i alt="pinned" class="fas fa-thumbtack float-right" style="color:var(--accent-color)"></i>
                     {% endif %}
 
-                    <a href="{{url_for('post', post_id=post.blog_id)}}">
+                    <a href="{{url_for('main.post', post_id=post.blog_id)}}">
                         <h1>{{post.name|safe}}</h1>
                     </a>
                     <small>
@@ -41,18 +41,18 @@
 
                         {% if general_settings.excerpt %}
                             <center>
-                                <a href="{{url_for('post', post_id=post.blog_id)}}" class="mt-1">Continue Reading...</a><br>
+                                <a href="{{url_for('main.post', post_id=post.blog_id)}}" class="mt-1">Continue Reading...</a><br>
                             </center>
                         {% endif %}
 
 
                     <small>
                         <b>Category</b>:
-                            <a href="{{url_for('query', term=post.category)}}">{{post.category}}</a><br>
+                            <a href="{{url_for('main.query', term=post.category)}}">{{post.category}}</a><br>
 
                             <b>Tags:</b>
                                 {% for tag in post.tags %}
-                                    <a href="{{url_for('query', term=tag.name)}}">{{tag.name}}</a>{%if not loop.last%}, {%else%} {%endif%}
+                                    <a href="{{url_for('main.query', term=tag.name)}}">{{tag.name}}</a>{%if not loop.last%}, {%else%} {%endif%}
                                 {% endfor %}
                     </small>
 
@@ -89,7 +89,7 @@
 
                         {% else %}
 
-                            <a href="{{url_for('index', page=page_num)}}" class="btn btn-custom">{{page_num}}</a>
+                            <a href="{{url_for('main.index', page=page_num)}}" class="btn btn-custom">{{page_num}}</a>
 
 
                         {% endif %}

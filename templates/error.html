@@ -30,9 +30,9 @@
     <center>
         <span>{{error}}</span>
         <br>
-        <a href="{{url_for('index')}}">{{error_text}}</a><br>
+        <a href="{{url_for('main.index')}}">{{error_text}}</a><br>
         {% if login %}
-        <a style="color:#419EAE;" href="{{url_for('login')}}">Login?</a>
+        <a style="color:#419EAE;" href="{{url_for('users.login')}}">Login?</a>
         {% endif %}
     </center>
 

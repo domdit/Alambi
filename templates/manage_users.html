@@ -36,7 +36,7 @@
 
       </div>
       <div class="modal-footer">
-        <a type="button" href="{{url_for('delete_item', item_id=user.id, table='user', location='manage_users')}}" class="btn btn-danger">Delete User</a>
+        <a type="button" href="{{url_for('admin.delete_item', item_id=user.id, table='user', location='settings.manage_users')}}" class="btn btn-danger">Delete User</a>
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>

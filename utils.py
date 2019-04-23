@@ -1,7 +1,6 @@
 from flask import current_app
 from alambi.models import Theme
 from PIL import Image
-from alambi import db
 import os
 
 def img_uploader(data):

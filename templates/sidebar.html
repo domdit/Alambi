@@ -46,7 +46,7 @@
 
                 {% if post %}
 
-                <a href="{{url_for('post', post_id=post.blog_id)}}">
+                <a href="{{url_for('main.post', post_id=post.blog_id)}}">
                     <h5 class="recent_posts"  style="margin-bottom: -8px; ">{{post.name}}</h5>
 
                 </a>
@@ -74,7 +74,7 @@
 
                 {% if post %}
 
-                <a href="{{url_for('post', post_id=post.blog_id)}}">
+                <a href="{{url_for('main.post', post_id=post.blog_id)}}">
                     <h5 class="recent_posts"  style="margin-bottom: -8px;">{{post.name}}</h5>
 
                 </a>
@@ -101,7 +101,7 @@
             <h4 style="margin-bottom: 0px;">Recent Categories:</h4>
                 {% for category in categories%}
                     <li style="margin-bottom: -5px;">
-                        <a href="{{url_for('query', term=category.category)}}">
+                        <a href="{{url_for('main.query', term=category.category)}}">
                             {{category.category}}
                         </a>
                     </li>
@@ -115,7 +115,7 @@
 
             <h4 style="margin-bottom: 0px;">Recent Tags:</h4>
                 {% for tag in tags %}
-                    <a href="{{url_for('query', term=tag.name)}}">
+                    <a href="{{url_for('main.query', term=tag.name)}}">
                         {{tag.name}}
 
                     </a>
