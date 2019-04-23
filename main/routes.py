@@ -13,7 +13,6 @@ main = Blueprint('main', __name__)
 @main.route("/", methods=['GET', 'POST'])
 def index():
 
-    #fix this
     general_settings = GeneralSettings.query.first()
     sidebar_settings = SidebarSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()

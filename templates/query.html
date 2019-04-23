@@ -8,72 +8,18 @@
 
         <div class="row">
 
+            {# Include the sidebar on the left of main page if chosen in the settings #}
             {% if sidebar_settings.main_position == 1 %}
-
-            <div class="col-md-4">
-                {% include 'sidebar.html' %}
-
-            </div>
-
+            <div class="col-md-4">{% include 'sidebar.html' %}</div>
             {% endif %}
 
-            <div class="col-md-8">
-
-
-            {% for tag in tag_posts %}
-                {% for post in tag %}
-                    <div class="blog-post-container border rounded mb-3">
-
-                        <a href="{{url_for('main.post', post_id=post.blog_id)}}"><h1>{{post.name}}</h1></a>
-                        <small>{{post.date.strftime('%m/%d/%Y %I:%M')|safe}} by {{general_settings.author}}</small>
-                        <small>
-                            {% if current_user.is_authenticated %}
-
-                                <a href="{{url_for('admin.update', post_id=post.blog_id)}}">
-                                    Edit
-                                </a>
-                                |
-                                <a href="{{url_for('admin.delete_item', item_id=post.blog_id, table='Blog', location='main.index')}}">
-                                    Delete
-                                </a>
-                            {% endif %}
-                        </small>
-                        <hr>
-                        <p class="excerpt">
-                            {{post.text|safe}}
-                        </p>
-                        <center>
-                            <a href="{{url_for('main.post', post_id=post.blog_id)}}">Continue Reading</a>
-
-                        </center>
-                        <br>
-
-
-                        <small>
-                            <b>Category</b>:
-                            <a href="{{url_for('main.query', term=post.category)}}">{{post.category}}</a><br>
-
-                            <b>Tags:</b>
-                                {% for tag in post.tags %}
-                                    <a href="{{url_for('main.query', term=tag.name)}}">{{tag.name}}</a>{%if not loop.last%}, {%else%} {%endif%}
-                                {% endfor %}
-                        </small>
-
-                    </div>
-
-                {% endfor %}
-
-            {% endfor %}
-
-        </div>
-
-            {% if sidebar_settings.main_position == 2 or sidebar_settings.main_position == 3 %}
-
-            <div class="col-md-4">
-                {% include 'sidebar.html' %}
-
+            <div class="{{ 'col-md-12' if sidebar_settings.post_position == 3 else 'col-md-8' }}">
+                {% include 'post_on_query.html' %}
             </div>
 
+            {# Include the sidebar on the right of main page if chosen in the settings #}
+            {% if sidebar_settings.main_position == 2 %}
+            <div class="col-md-4">{% include 'sidebar.html' %}</div>
             {% endif %}
 
         </div>

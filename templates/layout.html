@@ -23,8 +23,10 @@
 
     {% block script %}{% endblock %}
 
+    {# add fonts dynamically #}
     <link href="https://fonts.googleapis.com/css?family={{theme_settings.main_font}}|{{theme_settings.header_font}}" rel="stylesheet">
 
+    {# change colors and fonts based on theme chosen/created #}
     <style>
         :root {
             --main-font: '{{main_font}}';
@@ -42,22 +44,21 @@
         }
     </style>
 
-
-
 </head>
+
 <body>
 
+    {# Handle Flashed Messages #}
     {% for category, message in get_flashed_messages(with_categories=true) %}
-
         <div class="alert alert-info alert-dismissible alert-{{category}} m-2" style="position:fixed; z-index:9999; right:2px; top:2px;">
             <span type="text" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></span>
             {{ message }}
         </div>
-
     {% endfor%}
 
     {% block main %}{% endblock %}
 
+    {# Copyright #}
     <div class="mr-2 ml-2">
         {# help a young developer out and please do not remove the alambi link.. feel free to change designer if you made your own design :) #}
         <center>
