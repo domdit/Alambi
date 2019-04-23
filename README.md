@@ -4,7 +4,22 @@
 
 Alambi is a blogging engine made with the Python micro-framework Flask. The motivation behind this project was to create a simple to implement blogging engine for those who need a fast and elegant solution, while also allowing for complete customization and integration into an already established web application. There is absolutely no coding necessary (although encouraged) as Alambi works fresh out of the box.
 
-To see an example of Alambi in action, visit:
+## Demo
+![](assets/demo.gif)
+
+## Features
+* Based on Twitter Bootstrap
+* SQLAlchemy Database for storing all content
+* No coding necessary setup
+* Comments and Likes (Sharing coming soon!)
+* Category and Tagging system
+* Search functionality
+* Sticky Posts
+* 8 premade themes based on the color palettes of my favorite pokemon
+* Extensive theme builder for custom colors and fonts
+* Easily change the layout and customize the sidebar
+* WYSIWYG Text editor (Powered by TinyMCE)
+* Spam Protection (Powered by Google reCaptcha)
 
 ## Getting Started
 ### 1. Clone the Repository
