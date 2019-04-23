@@ -1,4 +1,4 @@
-<img src="https://github.com/domdit/myalambi/blob/master/logo.png?raw=true" height="291" width="731">
+<img src="https://github.com/domdit/myalambi/blob/master/static/logo.png?raw=true" height="291" width="731">
 
 ********
 
