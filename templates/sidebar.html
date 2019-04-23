@@ -1,9 +1,10 @@
     <div class="blog-post-container rounded">
 
         <center>
-            <!-- add image functionality -->
+            <img src="{{url_for('static', filename='logo.png')}}" alt="" style="height:60%; width:60%; margin-right:10px;">
 
-            <h2 style="color:{{theme_settings.blog_name_color}}">{{general_settings.name}}</h2>
+
+            <h2 style="color:{{theme_settings.blog_name_color}}"></h2>
 
             {% if sidebar_settings.search %}
 
