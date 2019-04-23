@@ -23,7 +23,9 @@
     <style>
         body {
             background-color: #107b6a;
-            padding:3%;
+            background-image: url("https://www.transparenttextures.com/patterns/fabric-of-squares.png");
+            padding:5%;
+
             color: black;
             font-family: 'Ubuntu';
         }
@@ -41,9 +43,11 @@
 
     <body>
         <div class="container rounded">
-            <h1>Welcome to Alambi!</h1>
-            <p>We just need some information before you can writing your new blog.</p>
-
+            <center>
+                <img src="{{url_for('static', filename='logo.png')}}" alt="" style="height:30%; width:30%;">
+            <p>Welcome to Alambi! We just need some information before we begin.</p>
+                <hr>
+            </center>
             <form action="" method="POST" enctype="multipart/form-data" style="max-width: 500px; margin-right:auto; margin-left:auto;">
                 {{ form.hidden_tag() }}
                 <fieldset class="form-group">
