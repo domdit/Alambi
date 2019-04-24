@@ -44,17 +44,25 @@ python -m pip install -r requirements.txt
 ```
 
 ### 3. Configure Environment Variables
-Configure necessary environment variables by editing your bashrc file `nano ~/.bashrc`
+Configure necessary environment variables by editing your bashrc file `nano ~/.bashrc`. I must stress the importance of typing these environment variables in. Copying and pasting may lead to unwanted spaces or indentation that would cause the app not to run properly!
+
+### Secret Key
+You need to set a secret key for this Flask app as well as set the SQLAlchemy Database URI. The Database URI should match what is written below, while the secret key can be anything you want. Go [here](https://stackoverflow.com/questions/34902378/where-do-i-get-a-secret-key-for-flask/34903502) for more info on secret keys and Flask
+
+```
+export SECRET_KEY="your_secret_key"
+export SQLALCHEMY_DATABASE_URI="sqlite:///site.db"
+```
 
 #### Email
 First let's set up your email functionality. These credentials will be used by Flask-Mail in order to send emails regarding updates about your website, new comments, or if you happen to forget your password and need it reset. While I am using gmail as an example below, feel free to use the email server of your choice.
 
 ```
-export EMAIL_USER="your@email.com"
-export EMAIL_PASS="Yourpassword123"
+export MAIL_USER="your@email.com"
+export MAIL_PASS="Yourpassword123"
 export MAIL_SERVER="smtp.gmail.com" 
 export MAIL_PORT="456"
-export MAIL_SSL=True
+export MAIL_USE_SSL=True
 ```
 
 #### reCaptcha
@@ -71,6 +79,20 @@ export RECAPTVHA_SECRET="your recaptcha secret key"
 Finally, we only need to add the API key for TinyMCE text editor. TinyMCE allows for a WYSIWYG experience when writing content for your site. You can drag and drop images, write your own html code, and a bunch of other features. Sign up for a free account at TinyMCE [here](https://www.tiny.cloud/signup/). Once you have signed up, you will be redirected to the Cloud API Key Setup page. When they ask for a domain name, you can just enter localhost. Remember to update the url if you deploy alambi to a web server! Add your TinyMCE API key to .bashrc as show below
 
 ```
+export TINYMCE_API="your tinymce api key"
+```
+
+In the end, your environemt variables should look like this:
+```
+export SECRET_KEY=""
+export SQLALCHEMY_DATABASE_URI="sqlite:///site.db"
+export MAIL_USER="your@email.com"
+export MAIL_PASS="Yourpassword123"
+export MAIL_SERVER="smtp.gmail.com" 
+export MAIL_PORT="456"
+export MAIL_USE_SSL=True
+export RECAPTCHA_PUBLIC="your recaptcha site key"
+export RECAPTVHA_SECRET="your recaptcha secret key"
 export TINYMCE_API="your tinymce api key"
 ```
 
@@ -96,6 +118,11 @@ Alambi comes packaged with 8 themes based on the color palettes of my favorite p
 
 Now that you have come this far, I invite you to look through the rest of the settings and navigate through the rest of the features Alambi has to offer!
 
+## Acknowledgements
+* [Corey Schafer's Flask Tutorial](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) (The only way to learn Flask).
+* [*Learning Flask Framework*](https://www.amazon.com/Learning-Flask-Framework-Matt-Copperwaite/dp/1783983361) by Matt Copperwaite & Charles Leifer. I utilized their Tag class from page 37 - 40.
+* [TinyMCE](https://www.tiny.cloud/) for the great text editor.
+* The many helpful people from the Python Discord
 
 ## Contact
 Contact me directly at me@domdit.com or visit my portfolio [here](http://www.domdit.com)!
