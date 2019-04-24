@@ -14,7 +14,7 @@ Alambi is a blogging engine made with the Python micro-framework Flask. The moti
 * [Getting Started](#getting-started)
 * [Easy Deployment with Python Anywhere](#deploy)
 * [Acknowledgements](#thanks)
-* [Contact](#contact)
+* [Authors](#contact)
 * [License](#license)
 
 ## <a name="features"></a> Features 
@@ -134,7 +134,11 @@ Now that you have come this far, I invite you to look through the rest of the se
 * The many helpful people from the Python Discord
 
 
-## <a name="contact"></a> Contact
-Contact me directly at me@domdit.com or visit my portfolio [here](http://www.domdit.com)!
+## <a name="contact"></a> Authors
+Dominic DiTaranto - domdit@gmail.com <br>
+Portfolio: [https://www.domdit.com](domdit.com)
+
+## <a name="license"></a> License
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 
