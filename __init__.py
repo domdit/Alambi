@@ -61,8 +61,10 @@ def autoversion_filter(filename):
 from alambi.main.routes import main
 from alambi.users.routes import users
 from alambi.admin.routes import admin
+from alambi.errors.routes import errors
 
 app.register_blueprint(main)
 app.register_blueprint(users)
 app.register_blueprint(admin)
+app.register_blueprint(errors)
 
