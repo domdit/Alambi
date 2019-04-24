@@ -10,18 +10,18 @@
 
             {# Include the sidebar on the left of main page if chosen in the settings #}
             {% if sidebar_settings.main_position == 1 %}
-            <div class="col-md-4">{% include 'sidebar.html' %}</div>
+            {% include 'sidebar.html' %}
             {% endif %}
 
             {# this is the div for the content of the blog posts #}
             {# if statement below will make the blog post the full page if sidebar layout option is "None" #}
-            <div class="{{ 'col-md-12' if sidebar_settings.main_position == 3 else 'col-md-8' }}">
-                {% include 'post_on_main.html' %}
+            <div class="{{ 'col-lg-12' if sidebar_settings.main_position == 3 else 'col-lg-8' }}">
+            {% include 'post_on_main.html' %}
             </div>
 
             {# Include the sidebar on the right of main page if chosen in the settings #}
             {% if sidebar_settings.main_position == 2 %}
-            <div class="col-md-4">{% include 'sidebar.html' %}</div>
+            {% include 'sidebar.html' %}
             {% endif %}
 
         </div>

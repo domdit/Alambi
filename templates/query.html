@@ -10,16 +10,17 @@
 
             {# Include the sidebar on the left of main page if chosen in the settings #}
             {% if sidebar_settings.main_position == 1 %}
-            <div class="col-md-4">{% include 'sidebar.html' %}</div>
+            {% include 'sidebar.html' %}
             {% endif %}
 
-            <div class="{{ 'col-md-12' if sidebar_settings.post_position == 3 else 'col-md-8' }}">
+            {# Handle main content #}
+            <div class="{{ 'col-lg-12' if sidebar_settings.post_position == 3 else 'col-lg-8' }}">
                 {% include 'post_on_query.html' %}
             </div>
 
             {# Include the sidebar on the right of main page if chosen in the settings #}
             {% if sidebar_settings.main_position == 2 %}
-            <div class="col-md-4">{% include 'sidebar.html' %}</div>
+            {% include 'sidebar.html' %}
             {% endif %}
 
         </div>
