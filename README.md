@@ -139,6 +139,6 @@ Dominic DiTaranto - domdit@gmail.com <br>
 Portfolio: [https://www.domdit.com](domdit.com)
 
 ## <a name="license"></a> License
-This project is licensed under the MIT License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the [https://github.com/domdit/myalambi/blob/master/LICENSE](LICENSE.md) file for details
 
 
