@@ -136,7 +136,7 @@ Now that you have come this far, I invite you to look through the rest of the se
 
 ## <a name="contact"></a> Authors
 Dominic DiTaranto - domdit@gmail.com <br>
-Portfolio: [https://www.domdit.com](domdit.com)
+Portfolio: {domdit.com](https://www.domdit.com)
 
 ## <a name="license"></a> License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/domdit/myalambi/blob/master/LICENSE) file for details
