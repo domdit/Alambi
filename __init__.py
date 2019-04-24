@@ -4,8 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_bcrypt import Bcrypt
 from flask_recaptcha import ReCaptcha
-from alambi.local_settings import *
-
+import os
 
 app = Flask(__name__)
 
@@ -14,11 +13,11 @@ app.config['SECRET_KEY'] = 'secret'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-app.config["MAIL_SERVER"] = mail_server
-app.config["MAIL_PORT"] = mail_port
-app.config["MAIL_USE_SSL"] = mail_use_ssl
-app.config["MAIL_USERNAME"] = mail_address
-app.config["MAIL_PASSWORD"] = mail_password
+app.config["MAIL_SERVER"] = "smtp.dreamhost.com"
+app.config["MAIL_PORT"] = 465
+app.config["MAIL_USE_SSL"] = True
+app.config["MAIL_USERNAME"] = os.getenv('MAIL_USER')
+app.config["MAIL_PASSWORD"] = os.getenv('MAIL_PASS')
 
 db = SQLAlchemy(app)
 mail = Mail(app)
@@ -26,8 +25,8 @@ bcrypt = Bcrypt(app)
 
 recaptcha = ReCaptcha()
 recaptcha.is_enabled = True
-recaptcha.site_key = recaptcha_public_key
-recaptcha.secret_key = recaptcha_secret_key
+recaptcha.site_key = os.getenv('ALAMBI_RECAPTCHA_PUBLIC')
+recaptcha.secret_key = os.getenv('ALAMBI_RECAPTCHA_SECRET')
 recaptcha.theme = 'light'
 recaptcha.type = 'image'
 recaptcha.size = 'normal'
@@ -68,3 +67,4 @@ from alambi.admin.routes import admin
 app.register_blueprint(main)
 app.register_blueprint(users)
 app.register_blueprint(admin)
+

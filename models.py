@@ -1,8 +1,15 @@
 from alambi import db, app
 from flask_login import UserMixin
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 import datetime
 
+
+migrate = Migrate(app, db)
+manager = Manager(app)
+
+manager.add_command('db', MigrateCommand)
 
 
 class User(db.Model, UserMixin):
@@ -62,6 +69,7 @@ class Comment(db.Model):
 
 class GeneralSettings(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    init = db.Column(db.Boolean, unique=False, default=False, nullable=True)
     name = db.Column(db.String(500), unique=False, nullable=False)
     author = db.Column(db.String(500), unique=False, nullable=False)
     post_count = db.Column(db.Integer)
@@ -73,6 +81,8 @@ class SidebarSettings(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     main_position = db.Column(db.Integer, default=2, nullable=False)
     post_position = db.Column(db.Integer, default=2, nullable=False)
+    show_blog_name = db.Column(db.Boolean, nullable=True)
+    show_logo = db.Column(db.Boolean, nullable=True)
     text = db.Column(db.Text)
     search = db.Column(db.Boolean, default=True, nullable=True)
     recent_posts = db.Column(db.Boolean, default=True, nullable=True)
@@ -101,3 +111,7 @@ class Theme(db.Model):
     sticky_color = db.Column(db.String(10), unique=False, nullable=False)
     main_font = db.Column(db.String(200), unique=False, nullable=False)
     header_font = db.Column(db.String(200), unique=False, nullable=False)
+
+
+if __name__ == '__main__':
+    manager.run()

@@ -1,19 +1,19 @@
 from flask import render_template, request, flash, redirect, url_for, Blueprint
 from flask_login import current_user, login_required
 from alambi import db, bcrypt
-from alambi.local_settings import tinymce_api_key
 from alambi.utils import img_uploader
 from alambi.models import (Blog, Comment, User, GeneralSettings, SidebarSettings,
                            Theme)
 from alambi.admin.forms import (GeneralSettingsForm, NewThemeForm, NewBlogPost,
                                 AdminForm, SidebarSettingsForm, ThemeSelectForm)
+import os
 
 
 admin = Blueprint('admin', __name__)
 
 
-@admin.route("/admin")
-@admin.route("/admin/general/", methods=['GET', 'POST'])
+@admin.route("/settings")
+@admin.route("/settings/general/", methods=['GET', 'POST'])
 @login_required
 def settings():
     if not current_user.is_authenticated:
@@ -51,7 +51,7 @@ def settings():
 
             db.session.commit()
 
-            flash("Your admin have been updated!", "dark")
+            flash("Your settings have been updated!", "success")
             return redirect(url_for('admin.admin'))
 
     if old_rules:
@@ -61,17 +61,17 @@ def settings():
         form.excerpt.data = old_rules.excerpt
         form.comments.data = old_rules.comments
 
-    return render_template('admin.html', title=old_rules.name + " - Settings", settings_title="General Settings",
+    return render_template('settings.html', title=old_rules.name + " - Settings", settings_title="General Settings",
                            form=form, theme_settings=theme_settings, main_font=main_font, head_font=head_font)
 
-@admin.route("/admin/sidebar/", methods=['GET', 'POST'])
+@admin.route("/settings/sidebar/", methods=['GET', 'POST'])
 @login_required
 def sidebar():
     if current_user.is_authenticated != True:
         flash('You must be logged in to do that!', 'warning')
         return redirect(url_for('users.ogin'))
 
-    tinymce = tinymce_api_key
+    tinymce = os.getenv('TINYMCE_API')
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font
@@ -89,6 +89,8 @@ def sidebar():
             if not old_rules:
                 item = SidebarSettings(main_position=form.main_position.data,
                                        post_position=form.post_position.data,
+                                       show_logo=form.show_logo.data,
+                                       show_blog_name=form.show_blog_name.data,
                                        text=form.text.data,
                                        search=form.search.data,
                                        recent_posts=form.recent_posts.data,
@@ -105,6 +107,8 @@ def sidebar():
             elif old_rules:
                 old_rules.main_position = form.main_position.data
                 old_rules.post_position = form.post_position.data
+                old_rules.show_logo = form.show_logo.data
+                old_rules.show_blog_name = form.show_blog_name.data
                 old_rules.text = form.text.data
                 old_rules.search = form.search.data
                 old_rules.recent_posts = form.recent_posts.data
@@ -120,12 +124,14 @@ def sidebar():
                 img_uploader(form.img.data)
 
             db.session.commit()
-            flash('Successfully updated sidebar admin!', 'success')
+            flash('Successfully updated sidebar settings!', 'success')
             return redirect(url_for('admin.sidebar'))
 
     if old_rules:
         form.main_position.data = old_rules.main_position
         form.post_position.data = old_rules.post_position
+        form.show_logo.data = old_rules.show_logo
+        form.show_blog_name.data = old_rules.show_blog_name
         form.text.data = old_rules.text
         form.search.data = old_rules.search
         form.recent_posts.data = old_rules.recent_posts
@@ -143,14 +149,14 @@ def sidebar():
                            tinymce=tinymce)
 
 
-@admin.route("/admin/theme/", methods=['GET', 'POST'])
+@admin.route("/settings/theme/", methods=['GET', 'POST'])
 @login_required
 def theme():
     if current_user.is_authenticated != True:
         flash('You must be logged in to do that!', 'warning')
         return redirect(url_for('users.login'))
 
-    tinymce = tinymce_api_key
+    tinymce = os.getenv('TINYMCE_API')
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font
@@ -184,6 +190,7 @@ def theme():
             current_theme.header_font = form.header_font.data
 
             db.session.commit()
+            flash('You successfully updated your theme!', 'success')
             return redirect(url_for('admin.theme'))
 
 
@@ -221,14 +228,14 @@ def theme():
                            main_font=main_font, head_font=head_font, tinymce=tinymce)
 
 
-@admin.route("/admin/new_post/", methods=['GET', 'POST'])
+@admin.route("/settings/new_post/", methods=['GET', 'POST'])
 @login_required
 def new_post():
     if current_user.is_authenticated != True:
         flash('You must be logged in to do that!', 'warning')
         return redirect(url_for('users.login'))
 
-    tinymce = tinymce_api_key
+    tinymce = os.getenv('TINYMCE_API')
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font
@@ -257,14 +264,11 @@ def new_post():
                            form=form, theme_settings=theme_settings, main_font=main_font, head_font=head_font,
                            tinymce=tinymce)
 
-@admin.route("/admin/manage_users/", methods=['GET', 'POST'])
-@login_required
+@admin.route("/settings/manage_users/", methods=['GET', 'POST'])
+#@login_required
 def manage_users():
-    if current_user.is_authenticated != True:
-        flash('You must be logged in to do that!', 'warning')
-        return redirect(url_for('users.login'))
 
-    tinymce = tinymce_api_key
+    tinymce = os.getenv('TINYMCE_API')
     general_settings = GeneralSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font
@@ -290,7 +294,7 @@ def manage_users():
                            head_font=head_font, tinymce=tinymce)
 
 
-@admin.route("/admin/about-alambi/")
+@admin.route("/settings/about-alambi/")
 @login_required
 def about_alambi():
     if current_user.is_authenticated != True:
@@ -309,14 +313,14 @@ def about_alambi():
                            form=form, theme_settings=theme_settings, main_font=main_font, head_font=head_font)
 
 
-@admin.route("/admin/post/<int:post_id>/update", methods=['GET', 'POST'])
+@admin.route("/settings/post/<int:post_id>/update", methods=['GET', 'POST'])
 @login_required
 def update(post_id):
     if current_user.is_authenticated != True:
         flash('You must be logged in to do that!', 'warning')
         return redirect(url_for('users.login'))
 
-    tinymce = tinymce_api_key
+    tinymce = os.getenv('TINYMCE_API')
 
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font

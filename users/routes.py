@@ -40,7 +40,7 @@ def login():
 
     form = Login()
     if current_user.is_authenticated:
-        return redirect(url_for('admin.admin'))
+        return redirect(url_for('admin.settings'))
     if request.method == 'POST':
         if form.validate_on_submit:
             user = User.query.filter_by(email=form.email.data).first()
@@ -105,6 +105,6 @@ def reset_email(user):
     blog = GeneralSettings.query.first()
     token = user.get_reset_token()
     msg = Message('Reset Password - ' + blog.name, sender='noreply@alambi.com', recipients=[user.email])
-    token_link = url_for('reset_password', token=token, _external=True)
+    token_link = url_for('users.reset_password', token=token, _external=True)
     msg.body = "To reset your password, click the following link: " + token_link
     mail.send(msg)

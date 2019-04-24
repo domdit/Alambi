@@ -4,7 +4,7 @@ from flask_mail import Message
 from alambi import db, mail, recaptcha
 from alambi.models import Blog, Comment, Tag, GeneralSettings, SidebarSettings, Theme
 from alambi.main.forms import Search, CommentForm
-from alambi.local_settings import mail_address
+import os
 
 
 main = Blueprint('main', __name__)
@@ -92,7 +92,7 @@ def post(post_id):
                     db.session.add(comment)
                     db.session.commit()
 
-                    msg = Message("New comment from " + general_settings.name, sender='noreply@alambi.com', recipients=[mail_address])
+                    msg = Message("New comment from " + general_settings.name, sender='noreply@alambi.com', recipients=[os.getenv('EMAIL_USER')])
                     msg.body = '''
                     From: %s <%s>
                     %s

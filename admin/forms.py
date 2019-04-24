@@ -20,6 +20,14 @@ class AdminForm(FlaskForm):
 
 
 class TagField(StringField):
+    '''
+    Tag field taken from "Learning Flask Framework" by Matt CopperWaite and Charles Leifer
+    Check out pages 37-42
+
+    Copperwaite, Matt, and Charles Leifer. 2015. Learning Flask Framework.
+    Packt Publishing. http://www.totalboox.com/book/id-7553921423834771450.
+
+    '''
 
     def _value(self):
         if self.data:
@@ -60,7 +68,9 @@ class SidebarSettingsForm(FlaskForm):
                                choices=[(1 ,'Left'),(2,'Right'),(3,'None')])
     post_position = RadioField('Position on Post Page:', coerce=int,
                                choices=[(1,'Left'),(2,'Right'),(3,'None')])
-    img = FileField('Main Image:', validators=[FileAllowed(['jpg', 'png', 'gif'])])
+    show_logo = BooleanField('Show Logo:')
+    img = FileField('Logo Image:', validators=[FileAllowed(['jpg', 'png', 'gif'])])
+    show_blog_name = BooleanField('Show Blog Name:')
     text = TextAreaField('Text:')
     search = BooleanField('Show Search Bar:')
     recent_posts = BooleanField('Show Links to Recent Posts:')

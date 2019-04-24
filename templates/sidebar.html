@@ -1,10 +1,18 @@
 <div class="blog-post-container rounded">
 
     <center>
-    <img src="{{url_for('static', filename='logo.png')}}" alt="" style="height:60%; width:60%; margin-right:10px;">
 
-    {# If set to show blog name in text #}
-    <h2 style="color:{{theme_settings.blog_name_color}}"></h2>
+    {# Handle sidebar logo #}
+    {% if sidebar_settings.show_logo %}
+        <img src="{{url_for('static', filename='sidebar/sidebar.png'|autoversion)}}" style="max-width:275px; height:auto;">
+    {% endif %}
+
+
+    {# Handle Blog name#}
+    {% if sidebar_settings.show_blog_name %}
+    <h2 style="color:{{theme_settings.blog_name_color}}">{{general_settings.name}}</h2>
+    {% endif %}
+
 
     {# Search Form #}
     {% if sidebar_settings.search %}

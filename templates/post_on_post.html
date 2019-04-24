@@ -4,7 +4,7 @@
     {% if current_user.is_authenticated %}
     <div class="float-right">
         <a href="{{url_for('main.sticky', post_id=post.blog_id)}}">
-            <i class="fas fa-thumbtack {{ 'sticky-clicked' if post.sticky else 'sticky'}}"></i>
+            <i class="fas fa-thumbtack {{ 'sticky' if post.sticky else 'sticky-clicked'}}" alt="Pin this post?"></i>
         </a>
     </div>
     {% endif %}
