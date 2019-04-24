@@ -9,7 +9,15 @@ Alambi is a blogging engine made with the Python micro-framework Flask. The moti
 ## Demo
 ![](assets/demo.gif)
 
-## Features
+## Table of Contents
+* [Features](#features)
+* [Getting Started](#getting-started)
+* [Easy Deployment with Python Anywhere](#deploy)
+* [Acknowledgements](#thanks)
+* [Contact](#contact)
+* [License](#license)
+
+## <a name="features"></a> Features 
 * Based on Twitter Bootstrap
 * SQLAlchemy Database for storing all content
 * No coding necessary setup
@@ -23,7 +31,7 @@ Alambi is a blogging engine made with the Python micro-framework Flask. The moti
 * WYSIWYG Text editor (Powered by TinyMCE)
 * Spam Protection (Powered by Google reCaptcha)
 
-## Getting Started
+## <a name="getting-started"></a> Getting Started
 ### 1. Clone the Repository
 In order to get alambi up and running on your local machine, either clone the repository to your desired path, or download the .zip file [here](https://www.my-alambi.com/download).
 
@@ -82,7 +90,7 @@ Finally, we only need to add the API key for TinyMCE text editor. TinyMCE allows
 export TINYMCE_API="your tinymce api key"
 ```
 
-In the end, your environemt variables should look like this:
+In the end, your environment variables should look like this:
 ```
 export SECRET_KEY=""
 export SQLALCHEMY_DATABASE_URI="sqlite:///site.db"
@@ -118,11 +126,15 @@ Alambi comes packaged with 8 themes based on the color palettes of my favorite p
 
 Now that you have come this far, I invite you to look through the rest of the settings and navigate through the rest of the features Alambi has to offer!
 
-## Acknowledgements
+
+## <a name="thanks"></a> Acknowledgements
 * [Corey Schafer's Flask Tutorial](https://www.youtube.com/watch?v=MwZwr5Tvyxo&list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH) (The only way to learn Flask).
 * [*Learning Flask Framework*](https://www.amazon.com/Learning-Flask-Framework-Matt-Copperwaite/dp/1783983361) by Matt Copperwaite & Charles Leifer. I utilized their Tag class from page 37 - 40.
 * [TinyMCE](https://www.tiny.cloud/) for the great text editor.
 * The many helpful people from the Python Discord
 
-## Contact
+
+## <a name="contact"></a> Contact
 Contact me directly at me@domdit.com or visit my portfolio [here](http://www.domdit.com)!
+
+
