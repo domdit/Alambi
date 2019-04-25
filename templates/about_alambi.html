@@ -1,0 +1,35 @@
+{% set active_page = "about" %}
+
+{% extends 'admin_layout.html' %}
+
+{% block admin %}
+<div style="height:100vh;">
+
+    <img src="{{url_for('static', filename='logo.png')}}" style="width:100%; height: auto; max-width:300px;">
+    <br>
+    <br>
+    <p>
+        Alambi version 1.0
+    </p>
+
+    <a class="btn btn-info" href="https://github.com/domdit/Alambi"> GitHub</a>
+    <a class="btn btn-success" href="http://www.alambi-blog.com">Project Website</a>
+
+    <p>
+    <br>
+
+    To report any issues or ask questions, either open a new issue on the project's github repository,
+    or email me directly at <a href="mailto:me@domdit.com">me@domdit.com</a>!
+
+    <br>
+    <br>
+    Thank you for choosing Alambi :)
+
+    </p>
+
+
+
+</div>
+
+
+{% endblock %}

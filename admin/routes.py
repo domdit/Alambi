@@ -309,7 +309,7 @@ def about_alambi():
 
     form = NewBlogPost()
 
-    return render_template('about-alambi.html', title="About Alambi", settings_title="About Alambi",
+    return render_template('about_alambi.html', title="About Alambi", settings_title="About Alambi",
                            form=form, theme_settings=theme_settings, main_font=main_font, head_font=head_font)
 
 
