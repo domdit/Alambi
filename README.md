@@ -2,7 +2,7 @@
   <img src="https://github.com/domdit/myalambi/blob/master/static/logo.png?raw=true" align="center" height="218" width="548">
 </p>
 
-Alambi is a blogging engine made with the Python micro-framework Flask. The motivation behind this project was to create a simple to implement blogging engine for those who need a fast and elegant solution, while also allowing for complete customization and integration into an already established web application. There is absolutely no coding necessary (although encouraged) as Alambi works fresh out of the box.
+Alambi is a blogging engine made with the Python micro-framework Flask. The motivation behind this project was to create a simple to implement blogging engine for those who need a fast and elegant solution, while also allowing for complete customization and integration into an already established web application. There is absolutely no coding necessary (although encouraged) as Alambi w orks fresh out of the box (minor configuration required (: ).
 
 **Project Site** [alambi-blog.com](http://www.alambi-blog.com)
 
