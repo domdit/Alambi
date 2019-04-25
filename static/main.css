@@ -96,6 +96,11 @@ a:hover {
     opacity: 0.5;
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
 /*   CSS for the admin menus   */
 
 .btn-secondary{

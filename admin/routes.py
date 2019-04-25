@@ -52,7 +52,7 @@ def settings():
             db.session.commit()
 
             flash("Your settings have been updated!", "success")
-            return redirect(url_for('admin.admin'))
+            return redirect(url_for('admin.settings'))
 
     if old_rules:
         form.blog_name.data = old_rules.name

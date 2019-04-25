@@ -27,9 +27,10 @@ def init():
             settings.post_count = 3
             settings.excerpt = True
             settings.comments = True
+            settings.init = True
 
             db.session.commit()
-            return redirect(url_for('index'))
+            return redirect(url_for('main.index'))
 
     return render_template('initialize.html', title="Welcome to Alambi", form=form)
 
@@ -66,7 +67,7 @@ def reset_request():
 
     form = RequestResetForm()
     if current_user.is_authenticated:
-        return redirect(url_for('admin.admin'))
+        return redirect(url_for('admin.settings'))
 
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -83,7 +84,7 @@ def reset_password(token):
 
     form = ResetPassword()
     if current_user.is_authenticated:
-        return redirect(url_for('admin.admin'))
+        return redirect(url_for('admin.settings'))
 
     user = User.verify_reset_token(token)
 

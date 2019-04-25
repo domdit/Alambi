@@ -14,6 +14,11 @@ main = Blueprint('main', __name__)
 def index():
 
     general_settings = GeneralSettings.query.first()
+
+    if not general_settings.init:
+        return redirect(url_for('users.init'))
+
+
     sidebar_settings = SidebarSettings.query.first()
     theme_settings = Theme.query.filter_by(selected=True).first()
     main_font = theme_settings.main_font

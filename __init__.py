@@ -23,8 +23,8 @@ bcrypt = Bcrypt(app)
 
 recaptcha = ReCaptcha()
 recaptcha.is_enabled = True
-recaptcha.site_key = os.getenv('ALAMBI_RECAPTCHA_PUBLIC')
-recaptcha.secret_key = os.getenv('ALAMBI_RECAPTCHA_SECRET')
+recaptcha.site_key = os.getenv('RECAPTCHA_PUBLIC')
+recaptcha.secret_key = os.getenv('RECAPTCHA_SECRET')
 recaptcha.theme = 'light'
 recaptcha.type = 'image'
 recaptcha.size = 'normal'
