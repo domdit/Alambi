@@ -7,7 +7,6 @@ Alambi is a blogging engine made with the Python micro-framework Flask. The moti
 **Project Site** [alambi-blog.com](http://www.alambi-blog.com)
 
 ## Demo
-<<<<<<< HEAD
 ![](alambi/assets/demo.gif)
 =======
 ![](alambi/assets/demo.gif)
@@ -114,7 +113,7 @@ Remember to save your changes and restart your .bashrc file by running `touch ~/
 
 If you navigate to localhost, Alambi should be set up and you should see this page:
 
-<<<<<<< HEAD
+
 ![](alambi/assets/initialize.png)
 
 Once you have finished filling out this form, you will be brought to your blog's main page, here:
@@ -128,7 +127,7 @@ You can edit the settings of your blog by going to /settings or /login and loggi
 Alambi comes packaged with 8 themes based on the color palettes of my favorite pokemon. You can also create your own themes with Alambi's simple to use theme creation system!
 
 ![](alambi/assets/appearance.gif)
-=======
+
 ![](alambi/assets/initialize.png)
 
 Once you have finished filling out this form, you will be brought to your blog's main page, here:
@@ -142,7 +141,6 @@ You can edit the settings of your blog by going to /settings or /login and loggi
 Alambi comes packaged with 8 themes based on the color palettes of my favorite pokemon. You can also create your own themes with Alambi's simple to use theme creation system!
 
 ![](alambi/assets/appearance.gif)
->>>>>>> 64a5080438418f5b02b9392c5355849aecef13a9
 
 Now that you have come this far, I invite you to look through the rest of the settings and navigate through the rest of the features Alambi has to offer!
 
