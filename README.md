@@ -80,7 +80,7 @@ Once you have your API keys, let's add them to .bashrc
 
 ```
 export RECAPTCHA_PUBLIC="your recaptcha site key"
-export RECAPTVHA_SECRET="your recaptcha secret key"
+export RECAPTCHA_SECRET="your recaptcha secret key"
 ```
 
 #### TinyMCE
@@ -100,7 +100,7 @@ export MAIL_SERVER="smtp.gmail.com"
 export MAIL_PORT="456"
 export MAIL_USE_SSL=True
 export RECAPTCHA_PUBLIC="your recaptcha site key"
-export RECAPTVHA_SECRET="your recaptcha secret key"
+export RECAPTCHA_SECRET="your recaptcha secret key"
 export TINYMCE_API="your tinymce api key"
 ```
 
