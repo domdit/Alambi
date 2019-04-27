@@ -1,0 +1,318 @@
+{% set active_page = "theme" %}
+
+{% extends 'admin_layout.html' %}
+
+{% block admin %}
+
+<div class="container" style="max-width:700px;">
+    <center>
+
+    <div class="row">
+        <div style="margin-right: auto; margin-left:auto; max-width:500px;">
+            <h4>Current Theme</h4>
+            {% for theme in themes %}
+                {% if theme.selected %}
+                    <p>Theme Name: {{theme.name}}</p>
+                    <p class="mt-2" style="font-family: {{main_font}};">
+                        Main Font - {{theme.main_font}}
+                    </p>
+
+                    <p style="font-family: {{head_font}}; margin-top: -20px;">
+                        Header Font - {{theme.header_font}}
+                    </p>
+
+                    <div style="padding-left:auto; padding-right: auto;">
+                        <div class="theme_color_sample" style="background-color: {{theme.bg_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.text_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.post_container_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.blog_name_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.header_color}};"></div>
+
+                        <div class="theme_color_sample" style=" background-color: {{theme.alt_header_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.link_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.like_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.comment_color}};"></div>
+                        <div class="theme_color_sample" style="background-color: {{theme.sticky_color}};"></div>
+                    </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+
+        {% endif %}
+
+    {% endfor %}
+</center>
+
+
+<form method="POST" action="" >
+    {{ selectform.hidden_tag() }}
+        <fieldset class="form-group">
+            <legend class="border-bottom">Select a Theme</legend>
+            <small>Select from a list of premade themes.</small>
+
+            <div class="form-group mt-3">
+                {{ selectform.selection.label(class="form-control-label") }}
+                {% if selectform.selection.errors %}
+                    {{ selectform.selection(class="form-control form-control-sm is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in selectform.selection.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ selectform.selection(class="form-control form-control-sm") }}
+                {% endif %}
+            </div>
+        </fieldset>
+
+
+
+    <div class="form-group">
+        {{  selectform.submit2(class="btn btn-outline-info") }}
+    </div>
+
+</form>
+
+
+<form method="POST" action="" >
+    {{ form.hidden_tag() }}
+    <fieldset class="form-group">
+        <legend class="border-bottom">Modify a Theme</legend>
+            <small>Modify your currently selected theme above.</small>
+        <div class="form-group mt-3">
+            {{ form.name.label(class="form-control-label") }}
+            {% if form.name.errors %}
+                {{ form.name(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.name.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.name(class="form-control form-control-sm") }}
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.main_font.label(class="form-control-label") }}
+            {% if form.main_font.errors %}
+                {{ form.main_font(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.main_font.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right" style="color:black;">
+                    {{ form.main_font(class="form-control form-control-sm font-select") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.header_font.label(class="form-control-label") }}
+            {% if form.header_font.errors %}
+                {{ form.header_font(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.header_font.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right" style="color:black;">
+                {{ form.header_font(class="form-control form-control-sm font-select") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.bg_color.label(class="form-control-label") }}
+            {% if form.bg_color.errors %}
+                {{ form.bg_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.bg_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.bg_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.text_color.label(class="form-control-label") }}
+            {% if form.text_color.errors %}
+                {{ form.text_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.text_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.text_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.post_container_color.label(class="form-control-label") }}
+            {% if form.post_container_color.errors %}
+                {{ form.post_container_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.post_container_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.post_container_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.blog_name_color.label(class="form-control-label") }}
+            {% if form.blog_name_color.errors %}
+                {{ form.blog_name_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.blog_name_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.blog_name_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.header_color.label(class="form-control-label") }}
+            {% if form.header_color.errors %}
+                {{ form.header_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.header_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.header_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.alt_header_color.label(class="form-control-label") }}
+            {% if form.alt_header_color.errors %}
+                {{ form.alt_header_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.alt_header_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.alt_header_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.link_color.label(class="form-control-label") }}
+            {% if form.link_color.errors %}
+                {{ form.link_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.link_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.link_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.like_color.label(class="form-control-label") }}
+            {% if form.like_color.errors %}
+                {{ form.like_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.like_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.like_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.sticky_color.label(class="form-control-label") }}
+            {% if form.sticky_color.errors %}
+                {{ form.sticky_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.sticky_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.sticky_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-group ">
+            {{ form.comment_color.label(class="form-control-label") }}
+            {% if form.comment_color.errors %}
+                {{ form.comment_color(class="form-control form-control-sm is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for error in form.comment_color.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="float-right">
+                {{ form.comment_color(class="form-control form-control-sm hex") }}
+                </div>
+            {% endif %}
+        </div>
+
+
+    </fieldset>
+    <div class="form-group">
+        {{ form.submit1(class="btn btn-outline-info") }}
+    </div>
+
+</form>
+
+</div>
+
+<script>
+
+    $('.font-select').fontselect();
+
+
+
+
+        if (window.innerWidth < screensize) {
+            current.removeClass('float-right');
+        } else {
+            current.addClass('float-right');
+        }
+
+
+
+</script>
+
+
+{% endblock %}

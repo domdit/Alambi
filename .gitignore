@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 *.pyc
 venv/
 __pycache__/
 run.py
 .idea/
+=======
+__pycache__/
+>>>>>>> 64a5080438418f5b02b9392c5355849aecef13a9

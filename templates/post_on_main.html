@@ -1,0 +1,40 @@
+
+{% for post in posts.items %}
+    <div class="blog-post-container border rounded mb-3">
+
+        {% if post.sticky %}
+            <i alt="pinned" class="fas fa-thumbtack float-right" style="color:var(--accent-color)"></i>
+        {% endif %}
+
+        <a href="{{url_for('main.post', post_id=post.blog_id)}}">
+            <h1>{{post.name|safe}}</h1>
+        </a>
+        <small>
+            {{post.date.strftime('%m/%d/%Y %I:%M')|safe}} By {{general_settings.author}}
+        </small>
+
+        <hr>
+        <p class="{{ 'excerpt' if general_settings.excerpt else ' '}}">
+            {{post.text|safe}}
+        </p>
+
+        {# cut off blog and add link to "continue reading" #}
+        {% if general_settings.excerpt %}
+            <center>
+                <a href="{{url_for('main.post', post_id=post.blog_id)}}" class="mt-1">Continue Reading...</a><br>
+            </center>
+        {% endif %}
+
+
+        <small>
+            <b>Category</b>:
+            <a href="{{url_for('main.query', term=post.category)}}">{{post.category}}</a><br>
+
+            <b>Tags:</b>
+                {% for tag in post.tags %}
+                    <a href="{{url_for('main.query', term=tag.name)}}">{{tag.name}}</a>{%if not loop.last%}, {%else%} {%endif%}
+                {% endfor %}
+        </small>
+
+    </div>
+{% endfor %}

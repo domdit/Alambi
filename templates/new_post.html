@@ -1,0 +1,66 @@
+{% set active_page = "post" %}
+
+{% extends 'admin_layout.html' %}
+
+{% block admin %}
+
+<div style="height:auto;">
+
+    <form action="" method="POST" enctype="multipart/form-data">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">
+
+                    <div class="form-group">
+                        {{ form.post_name.label(class="form-control-label") }}
+                        {{ form.post_name(class="form-control form-control-sm") }}
+                        {% if form.post_name.errors %}
+                            {% for error in form.post_name.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+
+                    <div class="form-group">
+                        {{ form.content.label(class="form-control-label") }}
+                        {{ form.content(class="form-control form-control-sm") }}
+                        {% if form.content.errors %}
+                            {% for error in form.content.errors %}
+                                <span class="text-danger">{{ error }}</span></br>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+
+                    <div class="row mb-1">
+                        <div class="col-md-6">
+                            {{ form.category.label(class="form-control-label") }}
+                            {{ form.category(class="form-control form-control-sm") }}
+                            {% if form.category.errors %}
+                                {% for error in form.category.errors %}
+                                    <span class="text-danger">{{ error }}</span></br>
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+
+                        <div class="col-md-6">
+                            {{ form.tags.label(class="form-control-label") }}
+                            {{ form.tags(class="form-control form-control-sm", placeholder="Separate tags with commas") }}
+                            {% if form.tags.errors %}
+                                {% for error in form.tags.errors %}
+                                    <span class="text-danger">{{ error }}</span></br>
+                                {% endfor %}
+                            {% endif %}
+
+                        </div>
+                    </div>
+
+        </fieldset>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-outline-info") }}
+        </div>
+    </form>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block script %}
+{% endblock %}
+{% block main %}
+
+<main>
+
+    <div class="container">
+
+        <div class="row">
+
+            {# Include the sidebar on the left of main page if chosen in the settings #}
+            {% if sidebar_settings.main_position == 1 %}
+            {% include 'sidebar.html' %}
+            {% endif %}
+
+            {# this is the div for the content of the post #}
+            {# if statement below will make the blog post the full page if sidebar layout option is "None" #}
+            <div class="{{ 'col-lg-12' if sidebar_settings.post_position == 3 else 'col-lg-8' }}">
+            {% include 'post_on_post.html' %}
+            </div>
+
+            {# Include the sidebar on the right of main page if chosen in the settings #}
+            {% if sidebar_settings.main_position == 2 %}
+            {% include 'sidebar.html' %}
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</main>
+
+{% endblock %}
