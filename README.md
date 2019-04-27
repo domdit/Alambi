@@ -8,9 +8,6 @@ Alambi is a blogging engine made with the Python micro-framework Flask. The moti
 
 ## Demo
 ![](alambi/assets/demo.gif)
-=======
-![](alambi/assets/demo.gif)
->>>>>>> 64a5080438418f5b02b9392c5355849aecef13a9
 
 ## Table of Contents
 * [Features](#features)
