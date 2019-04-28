@@ -7,7 +7,7 @@ Alambi is a blogging engine made with the Python micro-framework Flask. The moti
 **Project Site** [alambi-blog.com](http://www.alambi-blog.com)
 
 ## Demo
-![](alambi/assets/demo.gif)
+![](https://user-images.githubusercontent.com/13441577/56868266-17b88600-69a5-11e9-98d1-451ca439ea28.gif)
 
 ## Table of Contents
 * [Features](#features)
@@ -111,35 +111,17 @@ Remember to save your changes and restart your .bashrc file by running `touch ~/
 If you navigate to localhost, Alambi should be set up and you should see this page:
 
 
-![](alambi/assets/initialize.png)
+![](https://user-images.githubusercontent.com/13441577/56868268-18511c80-69a5-11e9-9dc5-80766407f3e0.png)
 
 Once you have finished filling out this form, you will be brought to your blog's main page, here:
 
-![](alambi/assets/home.png)
+![](https://user-images.githubusercontent.com/13441577/56868267-18511c80-69a5-11e9-937d-1c76ccb88a3c.png)
 
 You can edit the settings of your blog by going to /settings or /login and logging in with the credentials provided previously.
 
-![](alambi/assets/settings1.png)
+![](https://user-images.githubusercontent.com/13441577/56868269-18511c80-69a5-11e9-958b-197527a4ca2e.png)
 
 Alambi comes packaged with 8 themes based on the color palettes of my favorite pokemon. You can also create your own themes with Alambi's simple to use theme creation system!
-
-![](alambi/assets/appearance.gif)
-
-![](alambi/assets/initialize.png)
-
-Once you have finished filling out this form, you will be brought to your blog's main page, here:
-
-![](alambi/assets/home.png)
-
-You can edit the settings of your blog by going to /settings or /login and logging in with the credentials provided previously.
-
-![](alambi/assets/settings1.png)
-
-Alambi comes packaged with 8 themes based on the color palettes of my favorite pokemon. You can also create your own themes with Alambi's simple to use theme creation system!
-
-![](alambi/assets/appearance.gif)
-
-Now that you have come this far, I invite you to look through the rest of the settings and navigate through the rest of the features Alambi has to offer!
 
 
 ## <a name="thanks"></a> Acknowledgements
