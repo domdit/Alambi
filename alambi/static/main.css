@@ -58,6 +58,12 @@ a:hover {
     text-decoration: none;
 }
 
+/* why this is all of a sudden necessary I have no clue. */
+a > h2:hover{
+    opacity: 0.5;
+    text-decoration: none;
+}
+
 .excerpt {
     overflow: hidden;
     text-overflow: ellipsis;

@@ -4,13 +4,17 @@
 
         {# Handle sidebar logo #}
         {% if sidebar_settings.show_logo %}
-            <img src="{{url_for('static', filename='sidebar/sidebar.png'|autoversion)}}" style="width:100%; height:auto;">
+            <a href="{{ url_for('main.index') }}">
+                <img src="{{url_for('static', filename='sidebar/sidebar.png'|autoversion)}}" style="width:100%; height:auto;">
+            </a>
         {% endif %}
 
 
         {# Handle Blog name#}
         {% if sidebar_settings.show_blog_name %}
-        <h2 style="color:{{theme_settings.blog_name_color}}">{{general_settings.name}}</h2>
+            <a href="{{ url_for('main.index') }}">
+                <h2>{{general_settings.name}}</h2>
+            </a>
         {% endif %}
 
 
