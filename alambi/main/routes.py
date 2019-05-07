@@ -79,36 +79,40 @@ def post(post_id):
         next_post = Blog.query.get_or_404(next)
 
     form = CommentForm()
+    search_form = Search()
 
     if request.method == 'POST':
 
         if form.comment_submit.data:
             if form.validate_on_submit:
-                if recaptcha.verify():
+                # if recaptcha.verify():
 
-                    comment = Comment(name=form.name.data,
-                                      email=form.email.data,
-                                      text=form.text.data,
-                                      post=post
-                                      )
+                comment = Comment(name=form.name.data,
+                                  email=form.email.data,
+                                  text=form.text.data,
+                                  post=post
+                                  )
 
-                    post.comment_count += 1
+                post.comment_count += 1
 
-                    db.session.add(comment)
-                    db.session.commit()
+                db.session.add(comment)
+                db.session.commit()
+                recip = os.getenv("MAIL_USER")
+                msg = Message("New comment from " + general_settings.name, sender='noreply@alambi-blog.com', recipients=[recip])
+                msg.body = '''
+                From: %s <%s>
+                %s
+                %s
+                ''' % (form.name.data, form.email.data, form.text.data, url_for('main.post', post_id=post_id, _external=True))
 
-                    msg = Message("New comment from " + general_settings.name, sender='noreply@alambi.com', recipients=[os.getenv('EMAIL_USER')])
-                    msg.body = '''
-                    From: %s <%s>
-                    %s
-                    %s
-                    ''' % (form.name.data, form.email.data, form.text.data, url_for('main.post', post_id=post_id, _external=True))
+                mail.send(msg)
 
-                    mail.send(msg)
+                flash("Thank you for the comment! Check back soon for a reply!")
 
-                    flash("Thank you for the comment! Check back soon for a reply!")
+                return redirect(url_for('main.post', post_id=post_id))
 
-                    return redirect(url_for('main.post', post_id=post_id))
+        elif search_form.validate_on_submit:
+            return redirect(url_for('main.query', term=search_form.term.data))
 
     comments = Comment.query.filter(Comment.post_id == post_id).order_by(Comment.date.desc()).all()
 
@@ -117,10 +121,7 @@ def post(post_id):
     recent_posts = Blog.query.order_by(Blog.date.desc()).limit(sidebar_settings.max_recent).all()
     categories = Blog.query.group_by(Blog.category).limit(sidebar_settings.max_category).all()
     tags = Tag.query.group_by(Tag.name).limit(sidebar_settings.max_tag).all()
-    search_form = Search()
-    if request.method == 'POST':
-        if search_form.validate_on_submit:
-            return redirect(url_for('main.query', term=search_form.term.data))
+
 
 
     return render_template('post.html', post=post, prev_post=prev_post, next_post=next_post, search_form=search_form,

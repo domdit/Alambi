@@ -9,15 +9,17 @@ import os
 app = Flask(__name__)
 
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///site.db" # os.getenv('SQLALCHEMY_DATABASE_URI')
+
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///site.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 app.config["MAIL_SERVER"] = os.getenv('MAIL_SERVER')
 app.config["MAIL_PORT"] = os.getenv('MAIL_PORT')
 app.config["MAIL_USE_SSL"] = os.getenv('MAIL_USE_SSL')
 app.config["MAIL_USERNAME"] = os.getenv('MAIL_USER')
 app.config["MAIL_PASSWORD"] = os.getenv('MAIL_PASS')
 
-print(os.getenv('MAIL_SERVER'))
+print(os.getenv('MAIL_PASS'))
 
 db = SQLAlchemy(app)
 mail = Mail(app)

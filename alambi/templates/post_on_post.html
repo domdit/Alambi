@@ -72,7 +72,7 @@
 
                     {% if current_user.is_authenticated %}
                         <small>
-                            <a href="{{url_for('admin.delete_item', item_id=comment.id, table='comment', location=main.post.blog_id)}}">
+                            <a href="{{url_for('admin.delete_item', item_id=comment.id, table='comment', location=post.blog_id)}}">
                             Delete
                             </a>
                         </small>
