@@ -68,9 +68,9 @@ a > h2:hover{
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    line-height: 21px;
-    max-height: 150px;
-    -webkit-line-clamp: 4;
+    line-height: 20px;
+    max-height: 160px;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
 }
 
@@ -103,7 +103,7 @@ a > h2:hover{
 }
 
 img {
-    width: 100%;
+    max-width: 100%;
     height: auto;
 }
 

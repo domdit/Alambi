@@ -14,9 +14,9 @@
         </small>
 
         <hr>
-        <p class="{{ 'excerpt' if general_settings.excerpt else ' '}}">
+        <div class="{{ 'excerpt' if general_settings.excerpt else ' '}}">
             {{post.text|safe}}
-        </p>
+        </div>
 
         {# cut off blog and add link to "continue reading" #}
         {% if general_settings.excerpt %}
