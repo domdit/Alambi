@@ -1,7 +1,7 @@
 alembic==1.0.9
 bcrypt==3.1.6
 blinker==1.4
-certifi==2019.3.9
+certifi==2022.12.7
 cffi==1.12.2
 chardet==3.0.4
 Click==7.0
